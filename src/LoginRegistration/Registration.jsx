@@ -1,9 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import Swal from 'sweetalert2';
+import { AuthContext } from '../Firebase/Provider';
 const Registration = () => {
-    const handleRegistration=()=>{
-        console.log('kono registration hoi nai')
-    }
+  const {signUpUser,user}=useContext(AuthContext)
+  const handleRegistration=event=>{
+    event.preventDefault();
+    const form=event.target;
+    const name=form.name.value;
+    const email=form.email.value;
+    const password=form.password.value;
+    const imgUrl=form.imgUrl.value;
+   const registration={name,email,password,imgUrl};
+  // console.log(registration)
+   signUpUser(email,password)
+   .then(result=>{
+    const signUped=result.user;
+    console.log(signUped)
+    Swal.fire({
+      title: 'GOOD!',
+      text: 'Congratulations.Successfully Registration completed!!',
+      icon: 'success',
+      confirmButtonText: 'Okay'
+    })
+   })
+   .catch(error=>{
+    console.log(error.message)
+    alert(error.message,'noope')
+   })
+}
     return (
         <div>
             <div>

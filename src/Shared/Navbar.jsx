@@ -1,6 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../Firebase/Provider';
 const Navbar = () => {
+  const {user,logOut}=useContext(AuthContext)
+  const handleLogout=()=>{
+    logOut()
+    .then(()=>{})
+    .catch(error=>{
+      console.log(error.message)
+    })
+  }
     return (
         <div>
             <div className="navbar bg-base-100">
@@ -14,8 +24,10 @@ const Navbar = () => {
         
         <li><Link to='/'>Instructor</Link></li>
         <li><Link to='/'>Classes</Link></li>
-        <li><Link to='/'>Dashboard</Link></li>
-        <li><Link to='/login'>Login</Link></li>
+        {
+      user && <li><Link to='/'>Dashboard</Link></li>
+     }
+       
         
       </ul>
     </div>
@@ -27,15 +39,24 @@ const Navbar = () => {
         
         <li><Link to='/'>Instructor</Link></li>
         <li><Link to='/'>Classes</Link></li>
-        <li><Link to='/'>Dashboard</Link></li>
-        <li><Link to='/Login'>Login</Link></li>
+     {
+      user &&    <li><Link to='/'>Dashboard</Link></li>
+     }
+       
        
 
     </ul>
   </div>
-  <div className="navbar-end">
- <img  className='w-10 h-10' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiGSOXM7ck96MBiHMlDUg9lkkLDyJ_6Wsix26Q8ZmKVTWTYJcOY_L7_acMHQ_mbAFJCk4&usqp=CAU' alt="" />
- <li><Link to='/'>LogOut</Link></li>
+  <div className="mr-20 navbar-end">
+ {
+  user ?
+ 
+  <>
+<img  className='w-10 h-10' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiGSOXM7ck96MBiHMlDUg9lkkLDyJ_6Wsix26Q8ZmKVTWTYJcOY_L7_acMHQ_mbAFJCk4&usqp=CAU' alt="" />
+ <li><Link onClick={handleLogout} to='/'>LogOut</Link></li>
+ </> :
+  <li><Link to='/Login'>Login</Link></li>
+ }
   </div>
 </div>
         </div>

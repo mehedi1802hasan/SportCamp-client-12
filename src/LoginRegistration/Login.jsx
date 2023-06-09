@@ -1,14 +1,57 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa';
-
+import { useContext } from 'react';
+import { AuthContext } from '../Firebase/Provider';
+import Swal from 'sweetalert2';
 const Login = () => {
-    const handleLogin=()=>{
-        console.log('nai')
-    }
-    const handleGoogleLogin=()=>{
-        console.log('nai...')
-    }
+  const {loginUser,googleLogin}=useContext(AuthContext)
+  const handleLogin = event => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const Login = { email, password };
+    console.log(Login);
+    loginUser(email, password)
+      .then(result => {
+        const logined = result.user;
+        console.log(logined);
+       // navigate(from, { replace: true }); // Use navigate instead of history.replace
+        Swal.fire({
+          title: 'Wow! Matching!!',
+          text: 'Successfully Login done',
+          icon: 'success',
+          confirmButtonText: 'Okay'
+        });
+      })
+      .catch(error => {
+        console.log(error);
+        Swal.fire({
+          title: 'Sorry',
+          text: 'Your information is not correct!! Try again',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        });
+      });
+  };
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then(result => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      //  navigate(from, { replace: true });
+        Swal.fire({
+          title: 'Wow!!',
+          text: 'Successfully Login done',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        });
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  };
     return (
         <div className='mx-auto max-w-7xl'>
             <div>
