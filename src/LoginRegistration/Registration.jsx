@@ -3,27 +3,45 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Firebase/Provider';
+import { useNavigate } from 'react-router-dom';
 const Registration = () => {
-  const {signUpUser,user}=useContext(AuthContext)
+  const {signUpUser,user,updateUserProfile}=useContext(AuthContext)
+  const navigate =useNavigate()
   const handleRegistration=event=>{
     event.preventDefault();
     const form=event.target;
     const name=form.name.value;
     const email=form.email.value;
     const password=form.password.value;
-    const imgUrl=form.imgUrl.value;
-   const registration={name,email,password,imgUrl};
+    const photoURL=form.imgUrl.value;
+   const registration={name,email,password,photoURL};
   // console.log(registration)
    signUpUser(email,password)
    .then(result=>{
     const signUped=result.user;
     console.log(signUped)
+    // Swal.fire({
+    //   title: 'GOOD!',
+    //   text: 'Congratulations.Successfully Registration completed!!',
+    //   icon: 'success',
+    //   confirmButtonText: 'Okay'
+    // })
+  updateUserProfile(name, photoURL)
+  .then(()=>{
+    console.log('user profile info updated')
     Swal.fire({
       title: 'GOOD!',
-      text: 'Congratulations.Successfully Registration completed!!',
+      text: 'user cratedsuccessfully !!',
       icon: 'success',
       confirmButtonText: 'Okay'
     })
+    navigate('/')
+  })
+  .catch(error=>{
+    console.log(error)
+  })
+//
+
    })
    .catch(error=>{
     console.log(error.message)

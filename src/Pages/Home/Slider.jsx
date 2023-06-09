@@ -57,9 +57,9 @@ const [images,setImages]=useState([])
     <SwiperSlide key={index}>
       <img src={image.url} alt="" />
       <div className="slide-text">
-        <h2 className='text-xl font-bold text-yellow-500'>{image.title}</h2>
-        <p>{image.description}</p>
-      </div>
+        <h2 className='font-bold text-yellow-500 font-text-xl'>{image.title}</h2>
+        
+      </div >
     </SwiperSlide>
   ))
 }

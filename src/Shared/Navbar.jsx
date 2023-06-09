@@ -25,7 +25,7 @@ const Navbar = () => {
         <li><Link to='/'>Instructor</Link></li>
         <li><Link to='/'>Classes</Link></li>
         {
-      user && <li><Link to='/'>Dashboard</Link></li>
+      user && <li><Link to='/dashboard'>Dashboard</Link></li>
      }
        
         
@@ -40,7 +40,7 @@ const Navbar = () => {
         <li><Link to='/'>Instructor</Link></li>
         <li><Link to='/'>Classes</Link></li>
      {
-      user &&    <li><Link to='/'>Dashboard</Link></li>
+      user &&    <li><Link to='/dashboard'>Dashboard</Link></li>
      }
        
        
@@ -52,7 +52,7 @@ const Navbar = () => {
   user ?
  
   <>
-<img  className='w-10 h-10' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiGSOXM7ck96MBiHMlDUg9lkkLDyJ_6Wsix26Q8ZmKVTWTYJcOY_L7_acMHQ_mbAFJCk4&usqp=CAU' alt="" />
+<img  className='w-10 h-10' src={user.photoURL} alt="" />
  <li><Link onClick={handleLogout} to='/'>LogOut</Link></li>
  </> :
   <li><Link to='/Login'>Login</Link></li>
