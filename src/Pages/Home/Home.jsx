@@ -6,7 +6,7 @@ import ExtraSection from './ExtraSection';
 
 const Home = () => {
     return (
-        <div>
+        <div className='mx-auto max-w-7xl'>
         <Slider></Slider>
         <PopularClasses></PopularClasses>
         <PopularInstracturs></PopularInstracturs>
