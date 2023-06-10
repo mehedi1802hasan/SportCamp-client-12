@@ -30,6 +30,7 @@ const MyClasses = () => {
                                 <th>Class-Name</th>
                                 <th>Status</th>
                                 <th>Booked</th>
+                                <th>Review</th>
                             
 
                             </tr>
@@ -40,10 +41,9 @@ const MyClasses = () => {
                                     <tr key={cls._id}>
                                         <th>{i + 1}</th>
                                         <td>{cls.className}</td>
-                                        <td>{cls.status}
-                                         {cls.status==='denied' && <h3>{cls.review}</h3>}
-                                        </td>
+                                        <td>{cls.status}</td>
                                         <td>100</td>
+                                        <td>{cls.review}</td>
 
                                     </tr>
                                 ))}
