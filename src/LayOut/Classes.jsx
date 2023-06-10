@@ -1,9 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import Swal from 'sweetalert2';
 //import { useContext } from 'react';
 //import { AuthContext } from '../Firebase/Provider';
 const Classes = () => {
+  
+
    // const { user } = useContext(AuthContext)
     const [classes, setClasses] = useState([])
     useEffect(() => {
@@ -18,8 +21,28 @@ const Classes = () => {
 
             });
     }, []);
-    const handleSelect =()=>{
-        console.log('handleseleceddd...')
+    const handleSelect =(cls)=>{
+        const selectedClass={image:cls.image ,className:cls.className , instructorName:cls.instructorName ,price:cls.price}
+        console.log(selectedClass)
+        fetch('http://localhost:5000/myselectedclass',{
+          method:"POST",
+          headers:{
+            'content-type':'application/json'
+          },
+          body:JSON.stringify(selectedClass)
+        })
+        .then(res=>res.json())
+        .then(data =>{
+          if(data.insertedId){
+            Swal.fire({
+              title: 'GOOD!',
+              text: 'posted successfully !!',
+              icon: 'success',
+              confirmButtonText: 'Okay'
+            })
+        }
+    })
+   
     }
     return (
         <div>
@@ -50,7 +73,8 @@ const Classes = () => {
                                 <td>{cls.instructorName}</td>
                                 <td>{cls.seat}</td>
                                 <td>$ {cls.price} USD</td>
-                                <td ><button onClick={handleSelect } className="btn btn-sm btn-outline">Select</button></td>
+                                <td ><button onClick={() => handleSelect(cls)} className="btn btn-sm btn-outline">Select</button>
+</td>
 
                             
                                 
