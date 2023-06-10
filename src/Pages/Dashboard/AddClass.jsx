@@ -13,9 +13,23 @@ const AddClass = () => {
         const instructorEmail = form.instructorEmail.value;
         const seat = form.seat.value;
         const price = form.price.value;
-
-        const addClass = { className, image, instructorName, instructorEmail, seat, price };
+        const status =form.status.value;
+        const addClass = { className, image, instructorName, instructorEmail, seat, price ,status};
         console.log(addClass)
+        fetch('http://localhost:5000/classes',{
+            method:"POST",
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(addClass)
+        })
+        .then(result=>{
+            alert('added successfully')
+        })
+        .catch(error=>{
+            alert('sorry')
+        })
+        
     }
     return (
         <div className='w-full '>
@@ -89,6 +103,9 @@ const AddClass = () => {
 
                     </div>
                 </div>
+                
+             
+  <input className='hidden' type="text" name="status" defaultValue="pending" />
 
 
                 <input type="submit" value='Add Item' className='mt-5 bg-teal-500 btn btn-sm' />

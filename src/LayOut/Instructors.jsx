@@ -11,7 +11,7 @@ const Instructors = () => {
   })
     },[])
     return (
-        <div>
+        <div >
            
             <div className='w-8/12 mx-auto'>
       <h3 className='my-5 font-semibold text-center text-red-700 '> Total Instructors:  {instructors.length}</h3>

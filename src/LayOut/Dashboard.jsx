@@ -2,7 +2,6 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Navbar from '../Shared/Navbar';
-import Footer from '../Shared/Footer';
 const Dashboard = () => {
     const isAdmin =true;
     const isInstructors =true;
@@ -14,8 +13,9 @@ const Dashboard = () => {
             <Navbar/>
             <div className="drawer lg:drawer-open">
   <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-  <div className="flex flex-col items-center justify-center drawer-content">
-  <Outlet/>
+  <div className="flex flex-col drawer-content">
+    
+           <Outlet/>
     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
   
   </div> 
@@ -48,7 +48,7 @@ const Dashboard = () => {
   
   </div>
 </div>
-<Footer/>
+
         </div>
     );
 };
