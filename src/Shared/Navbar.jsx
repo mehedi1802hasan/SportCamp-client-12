@@ -22,7 +22,7 @@ const Navbar = () => {
       <ul tabIndex={0} className="p-2 mt-3 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
         <li><Link to='/'>Home</Link></li>
         
-        <li><Link to='/'>Instructor</Link></li>
+        <li><Link to='/instructors'>Instructor</Link></li>
         <li><Link to='/'>Classes</Link></li>
         {
       user && <li><Link to='/dashboard'>Dashboard</Link></li>
@@ -37,7 +37,7 @@ const Navbar = () => {
     <ul className="px-1 menu menu-horizontal">
     <li><Link to='/'>Home</Link></li>
         
-        <li><Link to='/'>Instructor</Link></li>
+        <li><Link to='/instructors'>Instructor</Link></li>
         <li><Link to='/'>Classes</Link></li>
      {
       user &&    <li><Link to='/dashboard'>Dashboard</Link></li>
