@@ -29,7 +29,7 @@ const Registration = () => {
   updateUserProfile(name, photoURL)
   .then(()=>{
     console.log('user profile info updated')
-    const saveUSer={name: name, email}
+    const saveUSer={name: name, email,image:photoURL}
     fetch('http://localhost:5000/users',{
       method:"POST",
       headers:{
