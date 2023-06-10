@@ -29,13 +29,28 @@ const Registration = () => {
   updateUserProfile(name, photoURL)
   .then(()=>{
     console.log('user profile info updated')
-    Swal.fire({
-      title: 'GOOD!',
-      text: 'user cratedsuccessfully !!',
-      icon: 'success',
-      confirmButtonText: 'Okay'
+    const saveUSer={name: name, email}
+    fetch('http://localhost:5000/users',{
+      method:"POST",
+      headers:{
+        'content-type':'application/json'
+      },
+      body: JSON.stringify(saveUSer)
     })
-    navigate('/')
+    .then(res=>res.json())
+    .then(data =>{
+      if(data.insertedId){
+        Swal.fire({
+          title: 'GOOD!',
+          text: 'user crated successfully !!',
+          icon: 'success',
+          confirmButtonText: 'Okay'
+        })
+        navigate('/')
+      }
+    
+    })
+   
   })
   .catch(error=>{
     console.log(error)

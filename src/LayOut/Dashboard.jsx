@@ -7,6 +7,8 @@ const Dashboard = () => {
     const isAdmin =true;
     const isInstructors =true;
     const isUser=true;
+    
+    
     return (
         <div>
             <Navbar/>

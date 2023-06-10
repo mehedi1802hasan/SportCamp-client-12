@@ -35,23 +35,41 @@ const Login = () => {
         });
       });
   };
-  const handleGoogleLogin = () => {
+  const handleGoogleLogin=()=>{
     googleLogin()
-      .then(result => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
-      //  navigate(from, { replace: true });
-        Swal.fire({
-          title: 'Wow!!',
-          text: 'Successfully Login done',
-          icon: 'success',
-          confirmButtonText: 'Cool'
-        });
+    .then(result=>{
+      const googlelogged=result.user;
+      
+      /////
+      const saveUser={name:googlelogged.displayName,email: googlelogged.email}
+      fetch('http://localhost:5000/users',{
+        method:"POST",
+        headers:{
+          'content-type':'application/json'
+        },
+        body:JSON.stringify(saveUser)
       })
-      .catch(error => {
-        console.log(error.message);
-      });
-  };
+      .then(res=>res.json())
+      .then(()=>{
+      
+            navigate(from, { replace: true });
+
+        
+      })
+      ////
+      console.log(googlelogged)
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Google Login successfully',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    })
+     .catch(error=>{
+      console.log(error.message)
+     })
+  }
     return (
         <div className='mx-auto max-w-7xl'>
             <div>
