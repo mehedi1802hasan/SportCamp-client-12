@@ -16,6 +16,7 @@ import MySelectedClasses from "../Pages/Dashboard/MySelectedClasses";
 import MyEnrolledClasses from "../Pages/Dashboard/MyEnrolledClasses";
 import Instructors from "../LayOut/Instructors";
 import Classes from "../LayOut/Classes";
+import Payment from "../Pages/Dashboard/Payment";
 const router = createBrowserRouter([
     {
       path: "/",
@@ -70,6 +71,11 @@ const router = createBrowserRouter([
         },{
           path:'myenrolledclasses' ,
           element:<MyEnrolledClasses></MyEnrolledClasses>
+        },
+        //// payment 
+        {
+    path: 'payment',
+    element:<Payment></Payment>
         }
       ]
     },{

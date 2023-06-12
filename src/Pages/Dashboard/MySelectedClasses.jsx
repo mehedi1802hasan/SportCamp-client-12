@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../Firebase/Provider';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 const MySelectedClasses = () => {
     const { user } = useContext(AuthContext)
     const [classes, setClasses] = useState([])
@@ -48,7 +49,10 @@ const MySelectedClasses = () => {
                                  <td>{cls.instructorName}</td>
                                 <td>{cls.seat}</td>
                                <td>$ {cls.price} USD</td>
-                        <td><button className="btn btn-sm btn-outline">Pay</button></td>
+                 {/**TODO Payment link */}       <td>  <Link to={`/dashboard/payment?price=${cls.price}`}>
+  <button className="btn btn-sm btn-outline">Pay</button>
+</Link>
+</td>
                        <td ><button className="btn btn-sm btn-outline">Delete</button></td>
 
                                     
