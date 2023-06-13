@@ -39,7 +39,7 @@ const ManageUser = () => {
           refetch();
           Swal.fire({
             title: 'SUCCESS!',
-            text: `${user.name} is now an Admin`,
+            text: `${user.name} is now an instructor`,
             icon: 'success',
             confirmButtonText: 'Okay',
           });
@@ -106,19 +106,22 @@ const ManageUser = () => {
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>
-                    {user.role === 'admin' ? (
-                      'admin'
-                    ) : (
-                      <div>
-                        <button onClick={() => handleAdmin(user)} className='btn btn-ghost btn-lg'>
-                          Admin
-                        </button>
-                        <button onClick={() => handleInstructor(user)} className='btn btn-ghost btn-lg'>
-                          Instructor
-                        </button>
-                      </div>
-                    )}
-                  </td>
+  {user.role === 'admin' ? (
+    'admin'
+  ) : user.role === 'instructor' ? (
+    'instructor'
+  ) : (
+    <div>
+      <button onClick={() => handleAdmin(user)} className='btn btn-ghost btn-lg'>
+        Admin
+      </button>
+      <button onClick={() => handleInstructor(user)} className='btn btn-ghost btn-lg'>
+        Instructor
+      </button>
+    </div>
+  )}
+</td>
+
                   <td>
                     <button onClick={() => handleDelete(user)} className='btn btn-ghost btn-lg'>
                       Delete
