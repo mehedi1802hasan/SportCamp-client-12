@@ -43,7 +43,7 @@ const MyClasses = () => {
                                         <td>{cls.className}</td>
                                         <td>{cls.status}</td>
                                         <td>100</td>
-                                        <td>{cls.review}</td>
+                                        <td>{cls?.review }</td>
 
                                     </tr>
                                 ))}

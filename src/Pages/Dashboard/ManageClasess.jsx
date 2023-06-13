@@ -2,8 +2,11 @@ import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../../Firebase/Provider';
 
 const ManageClasses = () => {
-  const { user } = useContext(AuthContext);
-  const [classes, setClasses] = useState([]);
+    const { user } = useContext(AuthContext);
+    const [classes, setClasses] = useState([]);
+    const [reviews, setReviews] = useState([]);
+   // const [disabledStates, setDisabledStates] = useState([]);
+
 
   useEffect(() => {
     fetch(`http://localhost:5000/classes/${user.email}`)
@@ -50,14 +53,21 @@ const ManageClasses = () => {
         console.error('Error review:', error);
       });
   };
-  const handleReview = (id) => {
-    fetch(`http://localhost:5000/classes/denied/${id}`, {
+  
+  const handleReview = (id, index) => {
+    const reviewValue = reviews[index];
+
+    fetch(`http://localhost:5000/classes/review/${id}`, {
       method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ review: reviewValue }),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log('Class denied:', data);
-        // Refresh the classes list after updating the status
+        console.log('Review added:', data);
+        // Refresh the classes list after updating the review
         fetch(`http://localhost:5000/classes/${user.email}`)
           .then((res) => res.json())
           .then((data) => {
@@ -65,10 +75,11 @@ const ManageClasses = () => {
           });
       })
       .catch((error) => {
-        console.error('Error denying class:', error);
+        console.error('Error adding review:', error);
       });
   };
 
+  
   return (
     <div>
       <div>
@@ -124,7 +135,25 @@ const ManageClasses = () => {
                       )}
                     </td>
                     <td>
-                      <button  className='btn btn-sm btn-outline'>Review</button>
+                      <>
+                        <input
+                          type='text'
+                          value={reviews[i]}
+                          onChange={(e) => {
+                            const updatedReviews = [...reviews];
+                            updatedReviews[i] = e.target.value;
+                            setReviews(updatedReviews);
+                          }}
+                          className='mr-2'
+                        />
+                        <button
+                          onClick={() => handleReview(cls._id, i)}
+                          className='btn btn-sm btn-outline'
+                         // disabled={!cls.review}
+                        >
+                          Review
+                        </button>
+                      </>
                     </td>
                   </tr>
                 ))}
