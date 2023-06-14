@@ -83,7 +83,7 @@ const Registration = () => {
   <div className="flex-col hero-content lg:flex-row">
     <div className="w-1/2 text-center lg:text-left">
       
-      <img  src='https://crm.easytrax.com.bd/client/client_registration/new/images/cover-img.png' alt="" />
+      <img  src='https://i.ibb.co/q7Qh9B0/sign-up-concept-illustration-114360-7885.jpg' alt="" />
     
     </div>
     <div className="flex-shrink-0 w-full max-w-sm shadow-2xl card bg-base-100">

@@ -8,12 +8,12 @@ const Error = () => {
                 <div className="flex items-center justify-center">
       <div className="relative w-full">
         <img
-          src="https://img.freepik.com/premium-vector/error-404-page-found-natural-concept-illustration-background-web-missing-landing-page_607751-171.jpg"
+          src="https://i.ibb.co/Wy1tY8T/error-404-page-not-found-concept-webpage-banner-vector-41002001.webp"
           className="w-full h-screen"
         />
         <div className="absolute inset-0 flex items-center justify-center">
          <Link to='/'>
-         <button className="px-5 py-5 text-yellow-500 bg-white rounded hover:bg-black">
+         <button className="px-5 py-5 text-yellow-500 bg-white rounded hover:bg-black btn btn-outline btn-primary">
             Go Back
           </button></Link>
         </div> 

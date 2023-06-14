@@ -78,7 +78,7 @@ const Login = () => {
       <div className="min-h-screen hero bg-base-200">
         <div className="flex-col md:gap-24 hero-content lg:flex-row">
           <div className="w-1/3 text-center lg:text-left">
-            <img src="https://www.naxeed.com/themes/default/images/login-img.png" alt="" />
+            <img src="https://i.ibb.co/hH0V1VW/mobile-login-concept-illustration-114360-2650.jpg" alt="" />
           </div>
           <div className="flex-shrink-0 max-w-sm shadow-2xl wfull card bg-base-100">
             <form onSubmit={handleLogin} className="card-body">
