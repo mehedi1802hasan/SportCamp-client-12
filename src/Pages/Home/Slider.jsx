@@ -29,7 +29,7 @@ const [images,setImages]=useState([])
     })
   },[])
   return (
-    <div>
+    <div >
       <Swiper
         effect="coverflow"
         grabCursor={true}

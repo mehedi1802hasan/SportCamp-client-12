@@ -15,7 +15,7 @@ const PopularClasses = () => {
         <h3 className='mt-10 font-serif text-2xl font-bold text-center text-red-700'>Popular Classes </h3>
          <div className='grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-3 m-7'>
            {
-            popularClass.map(cls=><div >
+            popularClass.slice(0, 6).map(cls=><div >
              
  <div className="w-full shadow-xl card bg-base-300">
   <figure className="px-10 pt-10">

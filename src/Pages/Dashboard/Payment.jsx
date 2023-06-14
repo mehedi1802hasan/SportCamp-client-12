@@ -21,7 +21,7 @@ const Payment = () => {
 
     return (
         <div>
-            <h3>.....Payment....... </h3>
+
           
             <Elements stripe = {stripePromise}> <CheckOutForm loader={loader} price ={price}  ></CheckOutForm> </Elements>
         </div>
