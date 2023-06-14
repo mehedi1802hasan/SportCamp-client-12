@@ -74,8 +74,9 @@ const router = createBrowserRouter([
         },
         //// payment 
         {
-    path: 'payment',
-    element:<Payment></Payment>
+    path: 'payment/:id',
+    element:<Payment></Payment>,
+    loader:({params})=>fetch(`http://localhost:5000/classese/${params.id}`)
         }
       ]
     },{

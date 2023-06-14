@@ -1,10 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const PopularClasses = () => {
+    const [popularClass,setPopularClass]=useState([]);
+    useEffect(()=>{
+        fetch('http://localhost:5000/payments')
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+            setPopularClass(data)
+        })
+    },[])
     return (
-        <div className='bg-blue-500'>
-            <h3>Popular classess......</h3>
+       <div>
+        <h3 className='mt-10 font-serif text-2xl font-bold text-center text-red-700'>Popular Classes </h3>
+         <div className='grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-3 m-7'>
+           {
+            popularClass.map(cls=><div >
+             
+ <div className="w-full shadow-xl card bg-base-300">
+  <figure className="px-10 pt-10">
+    <img src={cls.image} alt="class" className="w-48 h-48 rounded-xl" />
+  </figure>
+  <div className="items-center text-center card-body">
+    <h2 className="card-title"> {cls.className}</h2>
+    <p className='text-green-900'> ClassId:{cls.classId}</p>
+    <p>Price: $ {cls.price}USD</p>
+    <p>Seat: {cls.seat}</p>
+  </div>
+</div>
+
+            </div>)
+           }
         </div>
+       </div>
     );
 };
 

@@ -4,8 +4,10 @@ import { useContext } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Firebase/Provider';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 const Registration = () => {
-  const {signUpUser,user,updateUserProfile}=useContext(AuthContext)
+  const {signUpUser,user,updateUserProfile}=useContext(AuthContext);
+  const [error,setError]=useState('')
   const navigate =useNavigate()
   const handleRegistration=event=>{
     event.preventDefault();
@@ -15,6 +17,17 @@ const Registration = () => {
     const password=form.password.value;
     const photoURL=form.imgUrl.value;
    const registration={name,email,password,photoURL};
+   if (!/(?=.*?[A-Z])/.test(password)) {
+    setError('Please add at least 1 uppercase letter.');
+    return;
+  } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+    setError('Please add at least 1 special character.');
+    return;
+  } else if (password.length < 6) {
+    setError('Please add at least 6 characters.');
+    return;
+  }
+
   // console.log(registration)
    signUpUser(email,password)
    .then(result=>{
@@ -95,7 +108,7 @@ const Registration = () => {
           <label className="label">
             <span className="label-text">Img URL</span>
           </label>
-          <input type="text" name='imgUrl' placeholder="please enter image url" className="input input-bordered" />
+          <input type="text" name='imgUrl' placeholder="please enter image url" className="input input-bordered" required />
         </div>
         <div className="mt-6 form-control">
           <button className="btn btn-warning hover:bg-orange-500">Registration</button>
@@ -103,6 +116,7 @@ const Registration = () => {
         <h3 className='my-3 font-bold text-center '>Have you account? <Link className='text-green-700' to='/login'>Login</Link></h3>
 
       </form>
+      <p className='text-center text-red-600'>{error}</p>
     </div>
   </div>
 </div>

@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBK_2uRSveoGw0PzvK2MLvCE6LZKnONj3c",
-  authDomain: "sportcamp-cf139.firebaseapp.com",
-  projectId: "sportcamp-cf139",
-  storageBucket: "sportcamp-cf139.appspot.com",
-  messagingSenderId: "882747631226",
-  appId: "1:882747631226:web:a78b78b6e0fe99b6863dc3"
+  apiKey:import.meta.env.VITE_apiKey ,
+  authDomain:import.meta.env.VITE_authDomain ,
+  projectId:import.meta.env.VITE_projectId,
+  storageBucket:import.meta.env.VITE_storageBucket ,
+  messagingSenderId:import.meta.env.VITE_messagingSenderId ,
+  appId:import.meta.env.VITE_appId ,
 };
 
 // Initialize Firebase

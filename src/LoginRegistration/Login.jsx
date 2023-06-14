@@ -4,8 +4,10 @@ import { FaGoogle } from 'react-icons/fa';
 import { useContext } from 'react';
 import { AuthContext } from '../Firebase/Provider';
 import Swal from 'sweetalert2';
+import { useState } from 'react';
 const Login = () => {
   const {loginUser,googleLogin}=useContext(AuthContext)
+  const [show,setShow]=useState(false);
   const handleLogin = event => {
     event.preventDefault();
     const form = event.target;
@@ -90,13 +92,18 @@ const Login = () => {
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Password</span>
+                  
                 </label>
-                <input type="password" name="password" placeholder="please enter your password" className="input input-bordered" required />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
+                <input type={show? 'text':'password'}name="password" placeholder="please enter your password" className="input input-bordered " required />
+               <p className='mt-2' onClick={()=>setShow(!show)}>
+                <small >
+                  {show? <span>
+                    <img className='h-7 w-7' src="https://cdn-icons-png.flaticon.com/128/9055/9055153.png" alt="" /> </span> : 
+                    <span ><img className='h-7 w-7' src="https://cdn-icons-png.flaticon.com/128/159/159604.png" alt="" /></span>
+                 }
+                </small>
+                
+               </p>
               </div>
               <div className="mt-6 form-control">
                 <button className="btn btn-primary">Login</button>

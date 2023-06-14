@@ -4,29 +4,27 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../../Firebase/Provider';
-const CheckOutForm = ({price}) => {
+import useAxiosSecure from '../../hook/useAxiosSecure';
+import Swal from 'sweetalert2';
+//import './CheckOutForm.css'
+const CheckOutForm = ({price,loader}) => {
     const {user}=useContext(AuthContext);
     console.log('price..........',price)
     const stripe = useStripe()
     const elements = useElements();
     const [cardError, setCardError] = useState('')
-    //const [transactionId,setTrasactionId]=useState('')
+    const [axiosSecure]=useAxiosSecure();
+   const [processing,setProcessing]=useState(false)
+    const [transactionId,setTrasactionId]=useState('')
     const [clientSecret,setClientSecret] =useState('');
-    // useEffect(()=>{
-    //     console.log(price)
-    //     fetch('http://localhost:5000/create-payment-intent', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(price)
-    //      })
-    //    .then(res=>res.json())
-    //    .then(data=>{
-    //        console.log(data.clientSecret)
-    //       setClientSecret(data.clientSecret)
-    //     })
-    //  },[price])
+    
+    useEffect(()=>{
+        axiosSecure.post('/create-payment-intent', {price})
+        .then(res =>{
+           console.log( res.data.clientSecret);
+           setClientSecret(res.data.clientSecret);
+        }) 
+           },[])
     
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -54,7 +52,7 @@ const CheckOutForm = ({price}) => {
 console.log('niii')
            //todo
         }
-       
+       setProcessing(true);
         const {paymentIntent, error:confirmError} = await stripe.confirmCardPayment(
             clientSecret,
             {
@@ -72,8 +70,43 @@ console.log('niii')
           //  setCardError('')
           }
           console.log('paymentintent....',paymentIntent)
-
-    }
+          setProcessing(false)
+          if(paymentIntent.status === 'succeeded'){
+            setTrasactionId(paymentIntent.id)
+            const transactionId = paymentIntent.id
+            ////
+            const payment ={
+                email: user?.email,
+                transactionId: paymentIntent.id,
+                price,
+                seat: parseInt(loader.seat),
+                date: new Date(),
+              classId: loader._id,
+              className: loader.className,
+              instructorName: loader.instructorName,
+              image:loader.image
+               }
+               axiosSecure.post('/payments',payment)
+               .then(res=>{
+                console.log(res.data);
+                if(res.data.insertedId){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'successfully ! payment information added in the mongodb ',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                }
+               })
+               
+              }          
+            }
+            
+            
+            
+    //   }
+    // }
     return (
         <div>
             <h5 className='text-3xl font-bold text-center text-green-500'> Price:  {price}</h5>
@@ -95,12 +128,15 @@ console.log('niii')
                         },
                     }}
                 />
-                <button className='mt-5 btn btn-primary btn-sm' type="submit" disabled={!stripe }>
+                <button className='mt-5 btn btn-primary btn-sm' type="submit" disabled={!stripe || !clientSecret || processing }>
                     Pay
                 </button>
             </form>
             
             {cardError && <p className='text-red-600'>{cardError}</p>}
+            {
+                transactionId && <p className='text-green-500'>Transaction complete with transactionId :{transactionId}</p>
+            }
         </div>
     );
 };
