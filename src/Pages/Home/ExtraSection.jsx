@@ -44,7 +44,7 @@ const ExtraSection = () => {
     <h2 className="card-title">ADDITIONAL HELP</h2>
     <p>All time support from us?
     <div className="divider"></div>
-     <button className="btn btn-outline">Know more</button>
+     <button className="btn btn-outline ">Know more</button>
 </p>
   </div>
 </div>

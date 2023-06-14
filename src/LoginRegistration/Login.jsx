@@ -5,7 +5,12 @@ import { useContext } from 'react';
 import { AuthContext } from '../Firebase/Provider';
 import Swal from 'sweetalert2';
 import { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom'; 
 const Login = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || '/';
+
   const {loginUser,googleLogin}=useContext(AuthContext)
   const [show,setShow]=useState(false);
   const handleLogin = event => {
@@ -19,7 +24,7 @@ const Login = () => {
       .then(result => {
         const logined = result.user;
         console.log(logined);
-       // navigate(from, { replace: true }); // Use navigate instead of history.replace
+        navigate(from, { replace: true }); // Use navigate instead of history.replace
         Swal.fire({
           title: 'Wow! Matching!!',
           text: 'Successfully Login done',

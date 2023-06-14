@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Firebase/Provider';
 import { useContext } from 'react';
+import { useNavigate,useLocation } from 'react-router-dom';
 const Classes = () => {
+  const navigate=useNavigate();
+  const location=useLocation();
   const [classes, setClasses] = useState([]);
 const {user}=useContext(AuthContext)
   useEffect(() => {
@@ -28,6 +31,16 @@ const {user}=useContext(AuthContext)
   }, []);
 
   const handleSelect = (cls) => {
+  if(!user){
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'you should login first!',
+     
+    })
+    navigate('/login', { state: { from: location } });
+
+    }
     const selectedClass = {
         studentEmail:user.email,
       image: cls.image,

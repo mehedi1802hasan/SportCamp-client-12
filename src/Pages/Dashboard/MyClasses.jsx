@@ -29,7 +29,6 @@ const MyClasses = () => {
                                 <th>#</th>
                                 <th>Class-Name</th>
                                 <th>Status</th>
-                                <th>Booked</th>
                                 <th>Review</th>
                             
 
@@ -42,7 +41,7 @@ const MyClasses = () => {
                                         <th>{i + 1}</th>
                                         <td>{cls.className}</td>
                                         <td>{cls.status}</td>
-                                        <td>100</td>
+                                        
                                         <td>{cls?.review }</td>
 
                                     </tr>
