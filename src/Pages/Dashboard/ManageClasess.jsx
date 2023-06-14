@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../../Firebase/Provider';
-
+import Swal from 'sweetalert2';
 const ManageClasses = () => {
     const { user } = useContext(AuthContext);
     const [classes, setClasses] = useState([]);
@@ -71,7 +71,13 @@ const ManageClasses = () => {
         fetch(`http://localhost:5000/classes/${user.email}`)
           .then((res) => res.json())
           .then((data) => {
-            setClasses(data);
+            setClasses(data)
+            Swal.fire({
+              title: 'wow!',
+              text: 'review send successfully!',
+              icon: 'success',
+              confirmButtonText: 'Okay'
+            });;
           });
       })
       .catch((error) => {
@@ -149,7 +155,7 @@ const ManageClasses = () => {
                         <button
                           onClick={() => handleReview(cls._id, i)}
                           className='btn btn-sm btn-outline'
-                         // disabled={!cls.review}
+                          disabled={cls.status === 'approved'|| cls.status === 'pending'}
                         >
                           Review
                         </button>
