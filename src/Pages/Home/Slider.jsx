@@ -29,7 +29,7 @@ const [images,setImages]=useState([])
     })
   },[])
   return (
-    <div >
+    <div className='mx-auto ' >
       <Swiper
         effect="coverflow"
         grabCursor={true}
