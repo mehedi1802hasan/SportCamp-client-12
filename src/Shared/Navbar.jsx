@@ -32,7 +32,7 @@ const Navbar = () => {
       </ul>
     </div>
     <>
-    <img className='w-10 h-10 ml-4 '  src="https://i.ibb.co/v1RCr5d/2954946.png" alt="" />
+    <img className='w-10 h-10 md:ml-3 lg:ml-3'  src="https://i.ibb.co/v1RCr5d/2954946.png" alt="" />
 
     <Link className="text-2xl normal-case btn btn-ghost text-[#db2777] font-bold"> SportCapm</Link>
     </>
@@ -51,7 +51,7 @@ const Navbar = () => {
 
     </ul>
   </div>
-  <div className="mr-20 navbar-end">
+  <div className="md:mr-20 lg:mr-20 navbar-end">
     <ul className='flex items-center justify-center gap-5'>
  {
   user ?
