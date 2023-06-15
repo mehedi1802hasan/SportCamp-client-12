@@ -15,7 +15,9 @@ const Registration = () => {
     const name=form.name.value;
     const email=form.email.value;
     const password=form.password.value;
+    const confirmPassword= form.confirmPassword.value;
     const photoURL=form.imgUrl.value;
+    
    const registration={name,email,password,photoURL};
    if (!/(?=.*?[A-Z])/.test(password)) {
     setError('Please add at least 1 uppercase letter.');
@@ -43,7 +45,7 @@ const Registration = () => {
   .then(()=>{
     console.log('user profile info updated')
     const saveUSer={name: name, email,image:photoURL}
-    fetch('http://localhost:5000/users',{
+    fetch('https://sport-camp-server.vercel.app/users',{
       method:"POST",
       headers:{
         'content-type':'application/json'
@@ -105,10 +107,18 @@ const Registration = () => {
             <span className="label-text">Password</span>
           </label>
           <input type="password" name="password" placeholder="please enter your password" className="input input-bordered" required/>
+          </div>
+          <div className="form-control">
+          <label className="label">
+            <span className="label-text">Confirm-Password</span>
+          </label>
+          <input type="password" name="confirmPassword" placeholder="please Confrim your password" className="input input-bordered" required/>
+          </div>
+          <div className="form-control">
           <label className="label">
             <span className="label-text">Img URL</span>
           </label>
-          <input type="text" name='imgUrl' placeholder="please enter image url" className="input input-bordered" required />
+          <input type="text" name='imgUrl' placeholder="please enter image url" className="input input-bordered"  />
         </div>
         <div className="mt-6 form-control">
           <button className="btn btn-warning hover:bg-orange-500">Registration</button>

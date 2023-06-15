@@ -1,6 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../../Firebase/Provider';
+import Swal from 'sweetalert2';
 const AddClass = () => {
     const { user } = useContext(AuthContext)
     const handleSubmit = (event) => {
@@ -16,7 +17,7 @@ const AddClass = () => {
         const status =form.status.value;
         const addClass = { className, image, instructorName, instructorEmail, seat, price ,status};
         console.log(addClass)
-        fetch('http://localhost:5000/classes',{
+        fetch('https://sport-camp-server.vercel.app/classes',{
             method:"POST",
             headers:{
                 'content-type':'application/json'
@@ -24,10 +25,16 @@ const AddClass = () => {
             body:JSON.stringify(addClass)
         })
         .then(result=>{
-            alert('added successfully')
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500
+              })
         })
         .catch(error=>{
-            alert('sorry')
+           // alert('sorry')
         })
         
     }

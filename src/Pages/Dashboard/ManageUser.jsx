@@ -4,12 +4,12 @@ import Swal from 'sweetalert2';
 
 const ManageUser = () => {
   const { data: users = [], refetch } = useQuery(['users'], async () => {
-    const res = await fetch('http://localhost:5000/users');
+    const res = await fetch('https://sport-camp-server.vercel.app/users');
     return res.json();
   });
 
   const handleAdmin = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+    fetch(`https://sport-camp-server.vercel.app/users/admin/${user._id}`, {
       method: 'PATCH',
     })
       .then((res) => res.json())
@@ -30,7 +30,7 @@ const ManageUser = () => {
   };
 
   const handleInstructor = (user) => {
-    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+    fetch(`https://sport-camp-server.vercel.app/users/instructor/${user._id}`, {
       method: 'PATCH',
     })
       .then((res) => res.json())
@@ -62,7 +62,7 @@ const ManageUser = () => {
     }).then((result) => {
       if (result.isConfirmed) {
 
-        fetch(`http://localhost:5000/users/${user._id}`, {
+        fetch(`https://sport-camp-server.vercel.app/users/${user._id}`, {
           method: 'DELETE'
         })
           .then(res => res.json())

@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 const PopularInstracturs = () => {
   const [popularInstracturs,setPopularInstracturs]=useState([]);
   useEffect(()=>{
-      fetch('http://localhost:5000/users/instructors')
+      fetch('https://sport-camp-server.vercel.app/users/instructors')
       .then(res=>res.json())
       .then(data=>{
           console.log(data)
@@ -17,7 +17,7 @@ const PopularInstracturs = () => {
       <div className='grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-3 m-7'>
       {
         popularInstracturs.slice(0, 6).map(instructor=><div>
-<div className="shadow-xl card card-compact w-96 bg-base-100">
+<div className="shadow-xl card card-compact w-96 bg-slate-300">
   <figure><img className="w-48 h-48 rounded-xl" src={instructor.image} alt="Shoes" /></figure>
   <div className="items-center text-center card-body">
     <h2 className=" card-title">Name:{instructor.name}</h2>

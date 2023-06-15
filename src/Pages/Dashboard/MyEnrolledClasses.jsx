@@ -5,7 +5,7 @@ const MyEnrolledClasses = () => {
     const { user } = useContext(AuthContext)
     const [MyEnrolled, setMyEnrolled] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/payments')
+        fetch('https://sport-camp-server.vercel.app/payments')
             .then(res => res.json())
             .then((data) => {
                 const filteredClasses = data.filter(

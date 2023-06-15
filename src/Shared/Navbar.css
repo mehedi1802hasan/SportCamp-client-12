@@ -1,0 +1,12 @@
+/* For the dark theme */
+.white-theme {
+    background-color: #fff;
+    color: #000;
+  }
+  
+  /* For the white theme */
+  body {
+    background-color: #000;
+    color: #fff;
+  }
+  

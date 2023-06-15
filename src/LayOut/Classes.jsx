@@ -9,7 +9,7 @@ const Classes = () => {
   const [classes, setClasses] = useState([]);
 const {user}=useContext(AuthContext)
   useEffect(() => {
-    fetch('http://localhost:5000/classes/:instructorEmail')
+    fetch('https://sport-camp-server.vercel.app/classes/:instructorEmail')
       .then((res) => res.json())
       .then((data) => {
         const filteredClasses = data.filter(
@@ -50,7 +50,7 @@ const {user}=useContext(AuthContext)
       seat: cls.seat
     };
 
-    fetch('http://localhost:5000/myselectedclass', {
+    fetch('https://sport-camp-server.vercel.app/myselectedclass', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -119,9 +119,10 @@ const {user}=useContext(AuthContext)
                       <button
                         onClick={() => handleSelect(cls)}
                         className="btn btn-sm btn-outline"
-                        disabled={cls.disabled}
+                       // disabled={cls.disabled}
+                    //   disabled={cls.role === 'admin' || cls.role === 'instructo'}
                       >
-                        {cls.disabled ? 'Selected' : 'Select'}
+                        Select
                       </button>
                     </td>
                   </tr>

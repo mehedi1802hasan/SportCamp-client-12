@@ -49,7 +49,7 @@ const Login = () => {
       
       /////
       const saveUser={name:googlelogged.displayName,email: googlelogged.email}
-      fetch('http://localhost:5000/users',{
+      fetch('https://sport-camp-server.vercel.app/users',{
         method:"POST",
         headers:{
           'content-type':'application/json'

@@ -1,6 +1,8 @@
 
 import React, { useEffect } from 'react';
 import Marquee from "react-fast-marquee";
+import { Fade, Slide } from "react-awesome-reveal";
+
 const ExtraSection = () => {
     
       const icons = [
@@ -19,7 +21,10 @@ const ExtraSection = () => {
        
     <div>
             <section>
-            <h3 className='mt-16 mb-6 text-3xl font-bold text-center text-slate-900'>frequently asking</h3>
+            <Slide className='mt-16 mb-6 text-3xl font-bold text-center text-slate-900'>
+      <h3 className='text-3xl font-bold text-yellow-700'>frequently asking</h3>
+      </Slide>
+           
              <div className='grid w-10/12 gap-3 mx-auto grid-1cols-1 md:grid-cols-3 lg:grid-col-3 ' >
       <div className="card h-52 w-80 bg-slate-200">
   <div className="items-center text-center card-body">
@@ -53,11 +58,14 @@ const ExtraSection = () => {
 
         <section>
         <div className='my-10 text-center'> 
-      
-      <h3 className='text-3xl font-bold'>Our Partnerships</h3>
-      <p className='font-semibold text-yellow-800'>We are pleased to work with thousands of partners. Those who work with us globally include:
+      <Slide>
+      <h3 className='text-3xl font-bold text-yellow-800'>Our Partnerships</h3>
+      </Slide>
+      <Fade className='font-semibold text-yellow-800' delay={1e3} cascade damping={1e-1}>
+      We are pleased to work with thousands of partners. Those who work with us globally include:
 
-</p>
+      </Fade>
+      
      </div>
       <Marquee speed={60}>
         <div className="flex gap-4 px-10 mb-7">

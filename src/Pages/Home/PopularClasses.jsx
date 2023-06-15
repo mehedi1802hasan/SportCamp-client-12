@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const PopularClasses = () => {
     const [popularClass,setPopularClass]=useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/payments')
+        fetch('https://sport-camp-server.vercel.app/payments')
         .then(res=>res.json())
         .then(data=>{
             console.log(data)
@@ -17,7 +17,7 @@ const PopularClasses = () => {
            {
             popularClass.slice(0, 6).map(cls=><div >
              
- <div className="w-full shadow-xl card bg-base-300">
+ <div className="w-full shadow-xl card bg-slate-300 ">
   <figure className="px-10 pt-10">
     <img src={cls.image} alt="class" className="w-48 h-48 rounded-xl" />
   </figure>

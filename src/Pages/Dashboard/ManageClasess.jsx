@@ -9,7 +9,7 @@ const ManageClasses = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/classes/${user.email}`)
+    fetch(`https://sport-camp-server.vercel.app/classes/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setClasses(data);
@@ -17,14 +17,14 @@ const ManageClasses = () => {
   }, [user.email]);
 
   const handleApproved = (id) => {
-    fetch(`http://localhost:5000/classes/approved/${id}`, {
+    fetch(`https://sport-camp-server.vercel.app/classes/approved/${id}`, {
       method: 'PATCH',
     })
       .then((res) => res.json())
       .then((data) => {
         console.log('Class approved:', data);
         // Refresh the classes list after updating the status
-        fetch(`http://localhost:5000/classes/${user.email}`)
+        fetch(`https://sport-camp-server.vercel.app/classes/${user.email}`)
           .then((res) => res.json())
           .then((data) => {
             setClasses(data);
@@ -36,14 +36,14 @@ const ManageClasses = () => {
   };
 
   const handleDenied = (id) => {
-    fetch(`http://localhost:5000/classes/denied/${id}`, {
+    fetch(`https://sport-camp-server.vercel.app/classes/denied/${id}`, {
       method: 'PATCH',
     })
       .then((res) => res.json())
       .then((data) => {
         console.log('Class denied:', data);
         // Refresh the classes list after updating the status
-        fetch(`http://localhost:5000/classes/${user.email}`)
+        fetch(`https://sport-camp-server.vercel.app/classes/${user.email}`)
           .then((res) => res.json())
           .then((data) => {
             setClasses(data);
@@ -57,7 +57,7 @@ const ManageClasses = () => {
   const handleReview = (id, index) => {
     const reviewValue = reviews[index];
 
-    fetch(`http://localhost:5000/classes/review/${id}`, {
+    fetch(`https://sport-camp-server.vercel.app/classes/review/${id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ const ManageClasses = () => {
       .then((data) => {
         console.log('Review added:', data);
         // Refresh the classes list after updating the review
-        fetch(`http://localhost:5000/classes/${user.email}`)
+        fetch(`https://sport-camp-server.vercel.app/classes/${user.email}`)
           .then((res) => res.json())
           .then((data) => {
             setClasses(data)

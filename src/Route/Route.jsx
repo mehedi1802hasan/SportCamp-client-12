@@ -79,7 +79,7 @@ const router = createBrowserRouter([
         {
     path: 'payment/:id',
     element:<Payment></Payment>,
-    loader:({params})=>fetch(`http://localhost:5000/classese/${params.id}`)
+    loader:({params})=>fetch(`https://sport-camp-server.vercel.app/classese/${params.id}`)
         }
       ]
     },{
