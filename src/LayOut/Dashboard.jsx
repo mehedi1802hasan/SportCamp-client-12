@@ -70,6 +70,9 @@ const [isAdmin]=useAdmin()
                 <li>
                   <Link to="myenrolledclasses">My Enrolled Classes</Link>
                 </li>
+                <li>
+                  <Link to="paymentshistory">My Payments-History</Link>
+                </li>
               </>
             }
             

@@ -62,7 +62,7 @@ const ExtraSection = () => {
       <h3 className='text-3xl font-bold text-yellow-800'>Our Partnerships</h3>
       </Slide>
       <Fade className='font-semibold text-yellow-800' delay={1e3} cascade damping={1e-1}>
-     <i> We are pleased to work with thousands of partners. Those who work with us globally include:</i>
+     <i> We are pleased to work with thousands of partners.- Those who work with us globally include:</i>
 
       </Fade>
       
