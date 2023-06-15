@@ -23,7 +23,7 @@ const PaymentsHistory = () => {
                         My Paymented Classes: {MyEnrolled.length}
                     </h3>
                     <div className='overflow-x-auto'>
-                        <table className='table w-full bg-yellow-500'>
+                        <table className='table w-full bg-green-500'>
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -34,7 +34,7 @@ const PaymentsHistory = () => {
                                     <th>Date</th>
                                 </tr>
                             </thead>
-                            <tbody className='bg-green-500'>
+                            <tbody className='bg-yellow-500'>
                                 {MyEnrolled.length > 0 &&
                                     MyEnrolled.map((cls, i) => (
                                         <tr key={cls._id}>
