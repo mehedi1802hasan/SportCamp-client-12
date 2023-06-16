@@ -3,7 +3,12 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../Firebase/Provider';
 import { useContext } from 'react';
 import { useNavigate,useLocation } from 'react-router-dom';
+import useInstructor from '../hook/useInstructor';
+import useAdmin from '../hook/useAdmin';
 const Classes = () => {
+  const [isInstructor] = useInstructor();
+  const [isAdmin]=useAdmin()
+
   const navigate=useNavigate();
   const location=useLocation();
   const [classes, setClasses] = useState([]);
@@ -119,7 +124,7 @@ const {user}=useContext(AuthContext)
                       <button
                         onClick={() => handleSelect(cls)}
                         className="btn btn-sm btn-outline"
-                        disabled={cls.disabled}
+                        disabled={cls.disabled || isAdmin || isInstructor}
                     //   disabled={cls.role === 'admin' || cls.role === 'instructo'}
                       >
                         Select
