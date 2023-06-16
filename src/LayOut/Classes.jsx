@@ -119,7 +119,7 @@ const {user}=useContext(AuthContext)
                       <button
                         onClick={() => handleSelect(cls)}
                         className="btn btn-sm btn-outline"
-                       // disabled={cls.disabled}
+                        disabled={cls.disabled}
                     //   disabled={cls.role === 'admin' || cls.role === 'instructo'}
                       >
                         Select

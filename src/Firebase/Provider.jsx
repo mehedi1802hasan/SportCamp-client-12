@@ -50,6 +50,7 @@ const Provider = ({children}) => {
 
    
    const logOut=()=>{
+    localStorage.removeItem('disabledClasses')
       return signOut(auth)
  }
   const authInfo={
