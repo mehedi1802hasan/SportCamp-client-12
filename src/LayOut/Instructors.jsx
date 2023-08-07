@@ -13,10 +13,10 @@ const Instructors = () => {
     return (
         <div >
            
-            <div className='w-8/12 mx-auto'>
+            <div className='w-8/12 mx-auto mb-9'>
       <h3 className='my-5 font-semibold text-center text-red-700 '> Total Instructors:  {instructors.length}</h3>
       <div className='overflow-x-auto'>
-        <table className='table w-full bg-yellow-500'>
+        <table className='table w-full bg-slate-300'>
           <thead>
             <tr>
               <th>#</th>
@@ -26,7 +26,7 @@ const Instructors = () => {
             
             </tr>
           </thead>
-          <tbody className='bg-green-500'>
+          <tbody className='bg-slate-200  '>
             {instructors.length > 0 &&
               instructors.map((instructor, i) => (
                 <tr key={instructor._id}>

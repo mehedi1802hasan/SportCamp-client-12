@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import Tilt from 'react-parallax-tilt';
+
 const PopularInstracturs = () => {
   const [popularInstracturs,setPopularInstracturs]=useState([]);
   useEffect(()=>{
@@ -17,14 +19,19 @@ const PopularInstracturs = () => {
       <div className='grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-3 m-7'>
       {
         popularInstracturs.slice(0, 6).map(instructor=><div>
-<div className="mx-auto shadow-xl w-72 card card-compact bg-slate-300">
-  <figure><img className="w-48 h-48 rounded-xl" src={instructor.image} alt="Shoes" /></figure>
+          <Tilt>
+      <div style={{  backgroundColor: 'white' }}>
+      <div className="mx-auto shadow-xl w-72 card card-compact bg-slate-300">
+  <figure><img className="w-48 h-48 rounded-xl mt-2" src={instructor.image} alt="Shoes" /></figure>
   <div className="items-center text-center card-body">
     <h2 className=" card-title">Name:{instructor.name}</h2>
     <p>Email: {instructor.email}</p>
 
   </div>
 </div>
+      </div>
+    </Tilt>
+
 
         </div>)
       }

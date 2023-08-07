@@ -3,7 +3,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
-import { EffectCoverflow, Pagination, Autoplay } from 'swiper';
+import { Autoplay, Pagination,EffectCoverflow } from 'swiper/modules';
+
+//import { EffectCoverflow  } from 'swiper';
 import './Slider.css';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -57,7 +59,7 @@ const [images,setImages]=useState([])
     <SwiperSlide key={index}>
       <img src={image.url} alt="" />
       <div className="slide-text">
-        <h2 className='font-bold text-yellow-500 font-text-xl'>{image.title}</h2>
+        <h2 className='font-bold text-yellow-500 font-text-xl '>{image.title}</h2>
         
       </div >
     </SwiperSlide>

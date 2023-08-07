@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@smastrom/react-rating": "^1.3.1",
     "@stripe/react-stripe-js": "^2.1.0",
     "@stripe/stripe-js": "^1.54.0",
     "@tanstack/react-query": "^4.29.12",
@@ -23,11 +24,13 @@
     "react-dom": "^18.2.0",
     "react-fast-marquee": "^1.6.0",
     "react-icons": "^4.9.0",
+    "react-parallax-tilt": "^1.7.156",
+    "react-rating": "^2.0.5",
     "react-router-dom": "^6.12.1",
     "react-spinners": "^0.13.8",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.7.12",
-    "swiper": "^9.3.2"
+    "swiper": "^10.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",

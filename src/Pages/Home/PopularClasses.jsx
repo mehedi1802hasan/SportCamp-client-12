@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-
+import ReactDOM from 'react-dom';
+import Tilt from 'react-parallax-tilt';
 const PopularClasses = () => {
     const [popularClass,setPopularClass]=useState([]);
     useEffect(()=>{
@@ -18,8 +19,12 @@ const PopularClasses = () => {
             popularClass.slice(0, 6).map(cls=><div >
              
  <div className="w-full shadow-xl card bg-slate-300 ">
-  <figure className="px-10 pt-10">
-    <img src={cls.image} alt="class" className="w-48 h-48 rounded-xl" />
+ <Tilt>
+      <div style={{ height: 'auto', backgroundColor: 'white' }}>
+      <figure className="px-10 pt-10">
+  <img src={cls.image} alt="class" className="w-48 h-48 rounded-xl" />      
+  
+   
   </figure>
   <div className="items-center text-center card-body">
     <h2 className="card-title"> {cls.className}</h2>
@@ -27,6 +32,9 @@ const PopularClasses = () => {
     <p>Price: $ {cls.price}USD</p>
     <p>Seat: {cls.seat}</p>
   </div>
+    </div>
+    </Tilt>
+  
 </div>
 
             </div>)

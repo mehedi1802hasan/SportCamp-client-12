@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { useNavigate,useLocation } from 'react-router-dom';
 import useInstructor from '../hook/useInstructor';
 import useAdmin from '../hook/useAdmin';
+import Tilt from 'react-parallax-tilt';
 const Classes = () => {
   const [isInstructor] = useInstructor();
   const [isAdmin]=useAdmin()
@@ -90,15 +91,15 @@ const {user}=useContext(AuthContext)
   };
 
   return (
-    <div>
+    <div className='md:mx-10 '>
       <div>
         <h3 className="my-5 font-semibold text-center text-red-700">
           Total Classes: {classes.length}
         </h3>
         <div className="overflow-x-auto">
-          <table className="table w-full bg-yellow-500">
+          <table className="table w-full bg-slate-600  ">
             <thead>
-              <tr>
+              <tr className='font-bold text-red-500 font-serif'>
                 <th>#</th>
                 <th>Image</th>
                 <th>Class-Name</th>
@@ -108,7 +109,7 @@ const {user}=useContext(AuthContext)
                 <th>Add for Booking</th>
               </tr>
             </thead>
-            <tbody className="bg-green-500">
+            <tbody className="bg-slate-400 font-sans">
               {classes.length > 0 &&
                 classes.map((cls, i) => (
                   <tr key={cls._id}>
@@ -121,14 +122,19 @@ const {user}=useContext(AuthContext)
                     <td>{cls.seat}</td>
                     <td>$ {cls.price} USD</td>
                     <td>
+                    <Tilt>
+      <div style={{  }}>
                       <button
                         onClick={() => handleSelect(cls)}
-                        className="btn btn-sm btn-outline"
+                        className="btn btn-sm btn-outline hover:skew-y-12"
                         disabled={cls.disabled || isAdmin || isInstructor}
                     //   disabled={cls.role === 'admin' || cls.role === 'instructo'}
                       >
                         Select
                       </button>
+                      </div>
+                      </Tilt>
+
                     </td>
                   </tr>
                 ))}
