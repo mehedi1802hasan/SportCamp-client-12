@@ -91,55 +91,39 @@ const {user}=useContext(AuthContext)
   };
 
   return (
-    <div className='md:mx-10 '>
+    <div className='md:mx-10 my-5'>
       <div>
-        <h3 className="my-5 font-semibold text-center text-red-700">
-          Total Classes: {classes.length}
+        <h3 className="my-5 font-semibold text-center text-red-700 text-xl">
+          Total Classes:  {classes.length}
         </h3>
-        <div className="overflow-x-auto">
-          <table className="table w-full bg-slate-600  ">
-            <thead>
-              <tr className='font-bold text-red-500 font-serif'>
-                <th>#</th>
-                <th>Image</th>
-                <th>Class-Name</th>
-                <th>Instructor-Name</th>
-                <th>Avail-Seat</th>
-                <th>Price</th>
-                <th>Add for Booking</th>
-              </tr>
-            </thead>
-            <tbody className="bg-slate-400 font-sans">
-              {classes.length > 0 &&
-                classes.map((cls, i) => (
-                  <tr key={cls._id}>
-                    <th>{i + 1}</th>
-                    <td>
-                      <img className="w-20 h-20" src={cls.image} alt="" />
-                    </td>
-                    <td>{cls.className}</td>
-                    <td>{cls.instructorName}</td>
-                    <td>{cls.seat}</td>
-                    <td>$ {cls.price} USD</td>
-                    <td>
-                    <Tilt>
-      <div style={{  }}>
-                      <button
+        <div className='grid grid-cols-1 md:grid-cols-3 gap-3 w-full mx-auto'>
+        {
+          classes.map(cls=>
+            <div className="card w-96 md:h-full bg-base-100 shadow-xl">
+  <figure className="px-10 pt-10">
+    <img src={cls.image} alt="Shoes" className="rounded-xl  w-60 h-60 " />
+  </figure>
+  <div className="card-body items-center text-center">
+    <h2 className="card-title font-bold font-serif">{cls.className}</h2>
+    <p className='font-semibold font-serif text-rose-700'>Instructor: {cls.instructorName}</p>
+    <div className='flex gap-4 '>
+      <p>seat: <span  className='font-mono'>{cls.seat}</span></p>
+      <p>price: <span className='font-mono'>{cls.price}</span></p>
+    </div>
+    <div className="card-actions">
+
+    <button
                         onClick={() => handleSelect(cls)}
-                        className="btn btn-sm btn-outline hover:skew-y-12"
+                        className="btn btn-sm btn-outline hover:skew-y-12 border-2 border-rose-600 hover:bg-pink-500"
                         disabled={cls.disabled || isAdmin || isInstructor}
                     //   disabled={cls.role === 'admin' || cls.role === 'instructo'}
                       >
                         Select
-                      </button>
-                      </div>
-                      </Tilt>
-
-                    </td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
+                      </button>    </div>
+  </div>
+</div>
+          )
+        }
         </div>
       </div>
     </div>

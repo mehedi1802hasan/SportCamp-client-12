@@ -13,33 +13,25 @@ const Instructors = () => {
     return (
         <div >
            
-            <div className='w-8/12 mx-auto mb-9'>
+            <div className=' mb-9'>
       <h3 className='my-5 font-semibold text-center text-red-700 '> Total Instructors:  {instructors.length}</h3>
-      <div className='overflow-x-auto'>
-        <table className='table w-full bg-slate-300'>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Image</th>
-              <th>Name</th>
-              <th>Email</th>
-            
-            </tr>
-          </thead>
-          <tbody className='bg-slate-200  '>
-            {instructors.length > 0 &&
-              instructors.map((instructor, i) => (
-                <tr key={instructor._id}>
-                  <th>{i + 1}</th>
-                  <td> <img className='w-20 h-20' src={instructor.image}  alt="" /> </td>
-                  <td>{instructor.name}</td>
-                  <td>{instructor.email}</td>
-                  
-                </tr>
-              ))}
-          </tbody>
-        </table>
+     <div className='grid grid-cols-1 md:grid-cols-3  gap-4  w-full mx-auto'>
+      {
+        instructors.map(instructor=><div>
+         <div className="card w-96 bg-base-100 shadow-xl">
+  <figure className="px-10 pt-10">
+    <img src={instructor.image} alt="Shoes" className="h-48 w-48 rounded-xl" />
+  </figure>
+  <div className="card-body items-center text-center">
+    <h2 className="card-title font-serif">Name:<span className='text-pink-700 font-bold '> {instructor.name}</span></h2>
+    <div className="card-actions">
+      <h3 className=''><span className='font-serif text-black font-bold '>Email:</span> <span className='text-pink-700 font-bold '> {instructor.email}</span></h3>
       </div>
+  </div>
+</div>
+        </div>)
+      }
+     </div>
     </div>
         </div>
     );

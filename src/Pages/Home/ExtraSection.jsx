@@ -59,7 +59,7 @@ const ExtraSection = () => {
 </section>
 <Subscription></Subscription>
     <Feedback></Feedback>
-<section>
+<section className='mt-20'>
 
 <div className='my-10 text-center'> 
       <Slide>

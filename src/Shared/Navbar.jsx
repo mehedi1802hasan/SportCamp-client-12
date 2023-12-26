@@ -25,8 +25,8 @@ const Navbar = () => {
   };
 
   return (
-    <div>
-      <div className="navbar bg-base-100">
+    <div className=''>
+      <div className="navbar bg-base-100 ">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -47,7 +47,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="p-2 mt-3 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+              className=" z-10 p-2 mt-3 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
             >
               <li>
                 <Link className="text-[#db2777] font-bold" to="/">

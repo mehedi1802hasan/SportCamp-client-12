@@ -37,7 +37,7 @@ Swal.fire({
         setEmail(e.target.value)
     }
     return (
-        <section className='w-8/12 shadow-md shadow-slate-500 mx-auto p-16 my-16'>
+        <section style={{boxShadow:"2px 2px 9px 2px rgb(100 116 139) "}} className='md:w-8/12   mx-auto p-16 my-16'>
             <div className='md:flex justify-center items-center gap-48'>
                 <div><img src="https://food-express-client.web.app/assets/discount-c641d25b.svg" alt="" /></div>
                 <div>
@@ -48,9 +48,9 @@ Swal.fire({
                         discount from your first order.</p>
                 </div>
             </div>
-            <form onSubmit={handleSubmit} className='mt-10 md:w-8/12 mx-auto flex'>
+            <form onSubmit={handleSubmit} className='mt-10 w-8/12 mx-auto flex justify-center'>
                 <input className='text-center p-3 md:w-80 border-2 border-red-500' type="email" value={email} name='email' onChange={hanldeEmail} placeholder='enter your email' required />
-                <input  type="submit" value={'check'} className='bg-red-600 w-28' />
+                <input  type="submit" value={'check'} className='bg-red-600 md:w-28' />
             </form>
 
         </section>
