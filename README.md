@@ -4,7 +4,7 @@
  
 ## Live site Link
 
-Hosted in Firebase:>  [SportCamp]([https://sportcamp-cf139.web.app/](https://precious-chebakia-02bc2d.netlify.app/))
+Hosted in Firebase:>  [SportCamp]([https://precious-chebakia-02bc2d.netlify.app/])
 
 #Features
 
